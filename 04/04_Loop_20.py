@@ -12,7 +12,7 @@ while True:
     code=str(input())
     if code[0]=="Z":
         break
-    a,b=code.split(' ')
+    a,b=code.split()
     a=int(a); b=int(b)
     if i%2==0:
         min1=min(min1,a)
