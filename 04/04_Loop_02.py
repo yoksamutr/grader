@@ -1,7 +1,5 @@
 """bisection log10"""
 
-import math
-
 a=float(input())
 start=0; end=a
 x=(start+end)/2
