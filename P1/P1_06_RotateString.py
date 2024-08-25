@@ -1,4 +1,4 @@
-"""bowling"""
+"""rotate string"""
 
 order=str(input())
 n=int(input())
