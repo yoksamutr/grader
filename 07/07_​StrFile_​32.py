@@ -40,21 +40,14 @@ def repetition(p):
         if p[i]*4==p[i:i+4]:
             return True
     return False
-        
-def isdigit(p):
-    for i in p:
-        if not "0"<=i<="9":
-            return False
-    return True
 
 def number_sequence(p):
     lnum="01234567890123456789"
     rnum=lnum[-1::-1]
     for i in range(len(p)-3):
         num=p[i:i+4]
-        if isdigit(num):
-            if num in lnum or num in rnum:
-                return True
+        if num in lnum or num in rnum:
+            return True
     return False
             
 def letter_sequence(p):
