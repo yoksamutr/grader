@@ -2,10 +2,7 @@
 
 lt=[int(e) for e in input().split()]
 
-s={lt[0]}
-for i in lt:
-    s.add(i)
-    
+s=set(lt)    
 print(len(s))
 
 ans=[]
