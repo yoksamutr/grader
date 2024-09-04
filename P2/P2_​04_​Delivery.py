@@ -6,15 +6,15 @@ def invalid_year(y):
     return True
 
 def leap(y):
-    y-=543
-    if (y%400==0) or (y%4==0 and y%100!=0):
-        return 29
-    return 28
-
-def invalid_date(d,m,y):
     day_in_month=[0,31,28,31,30,31,30,31,
               31,30,31,30,31]
-    day_in_month[2]=leap(y)
+    y-=543
+    if (y%400==0) or (y%4==0 and y%100!=0):
+        day_in_month[2]=29
+    return day_in_month
+
+def invalid_date(d,m,y):
+    day_in_month=leap(y)
     if 1<=d<=day_in_month[m]:
         return False
     return True
@@ -30,9 +30,7 @@ def invalid_delivery_type(ch):
     return True
 
 def newdate(ch,d,m,y):
-    day_in_month=[0,31,28,31,30,31,30,31,
-              31,30,31,30,31]
-    day_in_month[2]=leap(y)
+    day_in_month=leap(y)
     time={"E":1,"Q":3,"N":7,"F":14}
     d+=time[ch]
     if d>day_in_month[m]:
