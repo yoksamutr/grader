@@ -8,7 +8,7 @@ def spiral_square(n):
         dt.append(k)
         dt.append(k)
     dt.append(n-1)
-    i,j=int((n-1)/2),int((n-1)/2)
+    i,j=n//2,n//2
     right,up,left,down=True,False,False,False
     while num<n**2:
         cnt=0
