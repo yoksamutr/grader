@@ -23,10 +23,7 @@ for _ in range(n):
     else:
         dct[tp]+=tosec(time)
 
-temp=[]
-for i,j in dct.items():
-    temp.append([-j,i])
-temp.sort()
+temp=sorted([[-j,i] for i,j in dct.items()])
 
 if len(temp)>2:
     for k in range(3):
