@@ -1,13 +1,10 @@
 """add vector"""
 
-first=str(input())
-second=str(input())
-first=first[1:-1]
-second=second[1:-1]
+vc1=input()[1:-1].split(", ")
+vc2=input()[1:-1].split(", ")
 
-list1=list(map(float,first.split(", ")))
-list2=list(map(float,second.split(", ")))
-ans=[]
-for i in range(3):
-    ans.append(list1[i]+list2[i])
-print(list1,"+",list2,"=",ans)
+vc1=[float(i) for i in vc1]
+vc2=[float(j) for j in vc2]
+ans=[vc1[e]+vc2[e] for e in range(len(vc1))]
+
+print(vc1,"+",vc2,"=",ans)
