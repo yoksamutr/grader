@@ -1,25 +1,25 @@
-"""file merge"""
+"""File Merge"""
 
-ip=input().split()
-fn1=open(ip[0],"r")
-fn2=open(ip[1],"r")
+t1,t2=[e for e in input().split()]
 
-def read_next(f):
-    lis=[]
-    while True:
-        t=f.readline()
-        if len(t)==0:
-            break
-        id,grade=t.strip().split()
-        code=id[-2::]
-        lis.append([code,id,grade])
-    return lis
+fn1=open(t1,"r")
+fn2=open(t2,"r")
 
-total=read_next(fn1)+read_next(fn2)
-total.sort()
+mp={}
 
-for it in total:
-    print(it[1],it[2])
-    
-fn1.close()
-fn2.close()
+def maping(file):
+    for line in file:
+        sid,score=[x for x in line.strip().split()]
+        code=sid[-2:]
+        if code in mp:
+            mp[code].append([sid,score])
+        else:
+            mp[code]=[[sid,score]]
+            
+maping(fn1)
+maping(fn2)
+        
+for key,val in sorted(mp.items()):
+    val.sort()
+    for v in val:
+        print(" ".join(v))
