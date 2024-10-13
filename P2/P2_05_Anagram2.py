@@ -1,46 +1,38 @@
-"""anagram II"""
+"""Anagram II"""
 
-str1=input()
-str2=input()
-            
-def to_dict(word):
-    dct={}
-    for i in word:
-        i=i.lower()
+w1=input()
+w2=input()
+
+def mp(w):
+    m={}
+    for i in w.lower():
         if "a"<=i<="z":
-            if i not in dct:
-                dct[i]=1
+            if i in m:
+                m[i]+=1
             else:
-                dct[i]+=1
-    dct=dict(sorted(dct.items()))
-    return dct #return dict
+                m[i]=1
+    return dict(sorted(m.items()))
 
-dct1,dct2=to_dict(str1),to_dict(str2)
+mp1,mp2=mp(w1),mp(w2)
 
-def to_ans(l1,l2): #dict,dict
+def to_ans(d1,d2,w):
     ans=[]
-    for x in l1:
-        if x in l2:
-            diff=l1[x]-l2[x]
+    for x in d1:
+        if x in d2:
+            diff=d1[x]-d2[x]
             if diff==1:
-                ans.append([" - remove",str(diff),x])
+                ans.append(" ".join([" - remove",str(1),x]))
             elif diff>1:
-                ans.append([" - remove",str(diff),x+"'s"])
-        elif l1[x]==1:
-            ans.append([" - remove",str(l1[x]),x])
-        else:
-            ans.append([" - remove",str(l1[x]),x+"'s"])
-    return ans
+                ans.append(" ".join([" - remove",str(diff),x+"'s"]))
+        elif d1[x]==1:
+            ans.append(" ".join([" - remove",str(1),x]))
+        elif d1[x]>1:
+            ans.append(" ".join([" - remove",str(d1[x]),x+"'s"]))
+    if len(ans)==0:
+        return [w," - None"]
+    return [w]+ans
 
-ans1,ans2=to_ans(dct1,dct2),to_ans(dct2,dct1)
-
-def print_ans(word,lst):
-    print(word)
-    if len(lst)==0:
-        print(" - None")
-    else:
-        for m in lst:
-            print(" ".join(m))
-
-print_ans(str1,ans1)
-print_ans(str2,ans2)
+for k in to_ans(mp1,mp2,w1):
+    print(k)
+for l in to_ans(mp2,mp1,w2):
+    print(l)
