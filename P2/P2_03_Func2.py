@@ -1,22 +1,22 @@
-"""potpourri function"""
+"""potpourri"""
 
 def convex_polygon_area(p):
-    p.append([p[0][0],p[0][1]])
-    front,back=0,0
+    p.append(p[0])
+    n1,n2=0,0
     for i in range(len(p)-1):
-        front+=(p[i][0]*p[i+1][1])
-        back+=(p[i][1]*p[i+1][0])
-    area=abs(front-back)/2
-    return area
+        n1+=p[i][0]*p[i+1][1]
+        n2+=p[i][1]*p[i+1][0]
+    return abs(n1-n2)/2
 
 def is_heterogram(s):
-    lt=[]
-    for i in s:
-        alp=i.lower()
-        if "a"<=alp<="z":
-            lt.append(alp)
-    st=set(lt)
-    return len(lt)==len(st)
+    mp={}
+    for i in s.lower():
+        if "a"<=i<="z":
+            if i in mp:
+                return False
+            else:
+                mp[i]=0
+    return True
 
 def replace_ignorecase(s,a,b):
     copy=s.lower()
@@ -39,17 +39,13 @@ def replace_ignorecase(s,a,b):
     return ans
 
 def top3(votes):
-    lt=[]
-    for it in votes:
-        lt.append([-votes[it],it])
-    lt.sort()
-    ans=[]
-    if len(lt)<3:
-        for i in lt:
-            ans.append(i[1])
-    else:
-        for j in range(3):
-            ans.append(lt[j][1])
+    temp=[]
+    for key,val in votes.items():
+        temp.append([-val,key])
+    temp.sort()
+    ans=[name for vote,name in temp]
+    if len(ans)>3:
+        return ans[:3]
     return ans
 
 for k in range(2):
