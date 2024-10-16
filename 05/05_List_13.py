@@ -1,26 +1,21 @@
-"""back n front"""
+"""Back n Front"""
 
-list1=[]
-for i in range(int(input())):
-    list1.append(int(input()))
+n=int(input())
 
-list2=[int(e) for e in input().split()]
-
-list3=[]
+n1=[int(input()) for _ in range(n)]
+n2=[int(e) for e in input().split()]
+n3=[]
 while True:
-    ip3=int(input())
-    if ip3==-1:
+    num=int(input())
+    if num==-1:
         break
-    list3.append(ip3)
+    n3.append(num)
+mix=n1+n2+n3
 
-total=list1+list2+list3
 ans=[]
-flag=True
-for x in total:
-    if flag:
-        ans.append(x)
-        flag=False
+for i in range(len(mix)):
+    if i%2==0:
+        ans.append(mix[i])
     else:
-        ans.insert(0,x)
-        flag=True
+        ans.insert(0,mix[i])
 print(ans)
