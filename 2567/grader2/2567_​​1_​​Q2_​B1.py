@@ -1,14 +1,14 @@
 """2567_1_Quiz_2_1"""
 
-D=[int(e) for e in input().split()]
-P=sorted(D)
+d=[int(e) for e in input().split()]
+p=sorted(d)
 
 res=[]
 cnt=0
-for i in range(len(D)):
-    cnt+=P[i]
-    idx=cnt%len(D)
-    num=D.pop(idx)
+for i in range(len(d)):
+    cnt+=p[i]
+    idx=cnt%len(d)
+    num=d.pop(idx)
     res.append(num)
     
 print(*res)
